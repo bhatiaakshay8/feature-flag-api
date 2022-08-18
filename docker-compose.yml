@@ -4,9 +4,8 @@ services:
     container_name: "feature-flag-api-service"
     networks:
       - feature-flag-api-service
-#    depends_on:
-#      - rabbitmq
-#      - liquibase
+    depends_on:
+      - liquibase
     ports:
       - "8071:8071"
     env_file:
