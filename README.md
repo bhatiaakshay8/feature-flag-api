@@ -1,6 +1,14 @@
 # feature-flag-api
 Feature Flag Api Service
 
+### Assumptions taken
+1. Each feature can have more than 2 dependency.
+   Since it is not written I am considering dependency as array list
+   instead of 2 separate variables which I would have taken in case of a classic Tree (with 2 branches at each point)
+2. Clearing previous Feature Flags before inserting new (that is why this is a PUT request)
+3. Sort and Store both done as part of one.
+   Not using additional DS to store sorted order. But if needed we can split the steps and create a list
+
 ### Module structure
 - `feature-flag-api-db-management` - wraps Liquibase and Liquibase changelogs for DB versioning
 - `feature-flag-api-service` - application entry point application context and rest controllers defined here
