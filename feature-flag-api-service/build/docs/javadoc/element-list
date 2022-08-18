@@ -1,0 +1,12 @@
+com.featureflag
+com.featureflag.authentication
+com.featureflag.authentication.data.entities
+com.featureflag.authentication.jwt
+com.featureflag.authentication.web
+com.featureflag.config
+com.featureflag.data
+com.featureflag.data.entities
+com.featureflag.exceptionhandler
+com.featureflag.services
+com.featureflag.utils
+com.featureflag.web

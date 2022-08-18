@@ -1,0 +1,59 @@
+services:
+  feature-flag-api-service:
+    image: feature-flag-api-service:DEV-SNAPSHOT
+    container_name: "feature-flag-api-service"
+    networks:
+      - feature-flag-api-service
+#    depends_on:
+#      - rabbitmq
+#      - liquibase
+    ports:
+      - "8071:8071"
+    env_file:
+      - ./feature-flag-api-service/src/main/docker/env.list
+    environment:
+      - RELATIONS_DATABASE_URL=jdbc:sqlserver://mssql:1433;databaseName=feature-flag-api-db;trustServerCertificate=true
+      - RELATIONS_DATABASE_PASSWORD=Mssq1pas_
+
+  liquibase:
+    image: liquibase/liquibase:4.2.2
+    container_name: 'liquibase'
+    networks:
+      - feature-flag-api-service
+    depends_on:
+      - mssql
+    volumes:
+      - ./feature-flag-api-db-management/src/main/liquibase-changelog:/liquibase/liquibase-changelog
+      - ./feature-flag-api-db-management/src/main/bin/entrypoint.sh:/liquibase/entrypoint.sh
+    env_file:
+      - feature-flag-api-db-management/src/main/docker/env.list
+    environment:
+      - DATABASE_HOST=mssql
+      - DATABASE_PORT=1433
+      - DATABASE_PASSWORD=Mssq1pas_
+    entrypoint: /bin/bash
+    command: ./entrypoint.sh
+
+  mssql:
+    container_name: 'mssql'
+    build:
+      context: ./mssql
+      dockerfile: mssql.Dockerfile
+    restart: on-failure
+    networks:
+      - feature-flag-api-service
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Mssq1pas_
+
+networks:
+  feature-flag-api-service:
+    name: feature-flag-api-service
+    driver: bridge
+
+volumes:
+  mssql:

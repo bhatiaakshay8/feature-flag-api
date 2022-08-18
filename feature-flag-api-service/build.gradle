@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.1'
+}
+dependencies {
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+    implementation 'org.springframework:spring-beans:5.3.22'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-oauth2-resource-server:5.7.2'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.boot:spring-boot-starter-test:2.6.7'
+//    implementation 'org.springframework.boot:spring-boot-starter-validation'
+//    implementation 'org.springframework.boot:spring-boot-starter-cache'
+//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+//    implementation 'org.junit.jupiter:junit-jupiter-migration-support:5.0.0-M4'
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.3'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.4'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+//    testImplementation 'org.springframework.amqp:spring-rabbit-test'
+//    testImplementation 'org.junit.platform:junit-platform-suite-api:1.8.2'
+}
+
+archivesBaseName = 'feature-flag-api-service'
+
+jar {
+    enabled = false
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact bootJar
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
+publish.dependsOn(bootJar, sourceJar, sourcesJar)

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "feature_a",
+    "dependentOnFeatures": [
+      "feature_b",
+      "feature_c"
+    ]
+  },
+  {
+    "name": "feature_b",
+    "dependentOnFeatures": [
+      "feature_d"
+    ]
+  },
+  {
+    "name": "feature_c",
+    "dependentOnFeatures": [
+      "feature_h"
+    ]
+  },
+  {
+    "name": "feature_d",
+    "dependentOnFeatures": [
+      
+    ]
+  },
+  {
+    "name": "feature_e",
+    "dependentOnFeatures": [
+      "feature_f"
+    ]
+  },
+  {
+    "name": "feature_f",
+    "dependentOnFeatures": [
+      
+    ]
+  },
+  {
+    "name": "feature_g",
+    "dependentOnFeatures": [
+      
+    ]
+  },
+  {
+    "name": "feature_h",
+    "dependentOnFeatures": [
+      "feature_g",
+      "feature_e"
+    ]
+  }
+]

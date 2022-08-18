@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "jwt",
+      "type": "com.featureflag.authentication.jwt.JwtProperties",
+      "sourceType": "com.featureflag.authentication.jwt.JwtProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jwt.admin",
+      "type": "java.lang.String",
+      "sourceType": "com.featureflag.authentication.jwt.JwtProperties"
+    },
+    {
+      "name": "jwt.password",
+      "type": "java.lang.String",
+      "sourceType": "com.featureflag.authentication.jwt.JwtProperties"
+    },
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.featureflag.authentication.jwt.JwtProperties"
+    },
+    {
+      "name": "jwt.token-validity-in-seconds",
+      "type": "java.lang.Long",
+      "sourceType": "com.featureflag.authentication.jwt.JwtProperties"
+    }
+  ],
+  "hints": []
+}

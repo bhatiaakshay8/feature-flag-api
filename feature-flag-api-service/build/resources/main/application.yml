@@ -1,0 +1,19 @@
+server:
+  port: ${PORT}
+spring:
+  datasource:
+    url: ${RELATIONS_DATABASE_URL}
+    username: ${RELATIONS_DATABASE_USERNAME}
+    password: ${RELATIONS_DATABASE_PASSWORD}
+    driverClassName: ${RELATIONS_DATABASE_DRIVER}
+
+jwt:
+  secret: ${JWT_SECRET_KEY}
+    # Token is valid 24 hours
+  token-validity-in-seconds: 86400
+  admin: ${API_USER_ADMIN}
+  password: ${API_PASSWORD}
+
+# Set package for Swagger
+springdoc:
+  packages: "com.featureflag"
