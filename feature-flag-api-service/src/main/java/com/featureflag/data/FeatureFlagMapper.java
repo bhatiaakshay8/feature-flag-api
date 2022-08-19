@@ -16,7 +16,8 @@ public interface FeatureFlagMapper {
     @Select("SELECT FeatureFlagNode.id, " +
             "FeatureFlagNode.name, " +
             "FeatureFlagNode.dependentOnFeatures " +
-            "FROM FeatureFlagNode")
+            "FROM FeatureFlagNode " +
+            "ORDER BY FeatureFlagNode.id")
     List<FeatureFlagNode> getAllFeatureFlagNodes();
 
     @Insert("INSERT into FeatureFlagNode (name, dependentOnFeatures)" +
