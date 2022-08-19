@@ -1,0 +1,4 @@
+rootProject.name = 'feature-flag-api'
+include 'feature-flag-api-service'
+include 'feature-flag-api-db-management'
+

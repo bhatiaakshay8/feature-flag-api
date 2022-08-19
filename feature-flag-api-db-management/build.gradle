@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id "org.liquibase.gradle" version "2.1.1"
+}
+
+group 'com.featureflag'
+archivesBaseName = 'feature-flag-api-db-management'
+
+// version variables
+def liquibaseVersion = '4.2.2'
+// Liquibase versions 4.4.0+ have additional dependencies
+// Check Liquibase Gradle plugin GitHub page for details
+def sqlServerVersion = '10.1.0.jre11-preview'
+
+dependencies {
+    liquibaseRuntime  'org.liquibase:liquibase-core:' + liquibaseVersion
+    liquibaseRuntime  'com.microsoft.sqlserver:mssql-jdbc:' + sqlServerVersion
+}
+//
+//ext.springProps = new Properties()
+//InputStream is = new FileInputStream("${project.rootDir}/feature-flag-api-db-management/src/main/liquibase-changelog/liquibase-gradle.properties")
+//springProps.load(is)
+//
+//// Liquibase configuration
+//liquibase {
+//    activities {
+//        main {
+//            print(springProps['dataBaseName'])
+//            changeLogFile springProps['changeLogFile']
+//            classpath springProps['classpath']
+//            url 'jdbc:sqlserver://' + springProps['databaseUrl'] + ':' + springProps['databasePort'] + ';databaseName=' + springProps['dataBaseName'] + ';trustServerCertificate=true'
+//            username springProps['databaseUserName']
+//            password springProps['databasePassword']
+//        }
+//    }
+//}
+//
+//tasks.register('rebuild'){
+//    description 'Rebuilds the database. Drops all objects first and then executes all changesets.'
+//    dependsOn 'dropAll'
+//    dependsOn 'update'
+//    doLast{
+//        println 'Database rebuilt!'
+//    }
+//}
